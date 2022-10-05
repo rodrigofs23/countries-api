@@ -1,0 +1,27 @@
+package com.countries.api.controller;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.web.servlet.MockMvc;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+@SpringBootTest
+@AutoConfigureMockMvc
+class CurrencyControllerTest {
+
+  @Autowired private MockMvc mockMvc;
+
+  @Test
+  void shouldReturnNotFound_ifInvalidEndpoint() throws Exception {
+    mockMvc.perform(get("/currencies/{id}", "id", "1234")).andExpect(status().isNotFound());
+  }
+
+  @Test
+  void getCountries() throws Exception {
+    mockMvc.perform(get("/api/v1/currencies")).andExpect(status().isOk());
+  }
+}

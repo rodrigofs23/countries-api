@@ -1,0 +1,8 @@
+coindirect-api:
+  url: https://api.coindirect.com
+  max-idle-seconds: 300
+  max-countries: 200
+  countries-enabled: true
+  max-currencies: 200
+  ttl-sec: 600
+  cache-max-size: 1000
